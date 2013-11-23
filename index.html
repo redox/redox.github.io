@@ -14,6 +14,10 @@ layout: default
     <span class="post-date">{{ post.date | date_to_string }}</span>
 
     {{ post.content }}
+
+    {% if post.image %}
+    <div class="text-center"><img src="/images/{{ post.image }}" alt="{{ post.title }}" /></div>
+    {% endif %}
   </div>
   {% endfor %}
 </div>

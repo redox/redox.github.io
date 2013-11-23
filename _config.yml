@@ -10,10 +10,10 @@ inc:
 
   # Sharing settings
   sharing:
-    twitter:    false
+    twitter:    true
     facebook:   false
     gplus:      false
-    hn:         false
+    hn:         true
 
  # Analytics     
   analytics:
@@ -21,7 +21,7 @@ inc:
       # eg. 'UA-123-12'
       id:       UA-2837949-2
 
-url:         http://incorporated.sendtoinc.com
+url:         http://sylvain.utard.info
 source:      .
 destination: ./_site
 plugins:     ./_plugins
@@ -40,7 +40,7 @@ relative_permalinks: true
 
 permalink:     pretty
 paginate_path: 'page:num'
-paginate: 10
+paginate: 3
 
 markdown:      maruku
 markdown_ext:  markdown,mkd,mkdn,md
