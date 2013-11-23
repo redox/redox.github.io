@@ -40,7 +40,7 @@ relative_permalinks: true
 
 permalink:     pretty
 paginate_path: 'page:num'
-paginate: 3
+paginate: 4
 
 markdown:      maruku
 markdown_ext:  markdown,mkd,mkdn,md
@@ -90,7 +90,6 @@ redcloth:
 # jekyll-assets: see more at https://github.com/ixti/jekyll-assets
 #
 assets:
-
   dirname: assets
   baseurl: /assets/
   sources:
