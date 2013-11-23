@@ -19,7 +19,11 @@ layout: default
       {% endif %}
     </span>
 
+    {% if post.excerpt != '' %}
+    {{ post.excerpt }}
+    {% else %}
     {{ post.content }}
+    {% endif %}
 
     {% if post.image %}
     <div class="text-center"><img src="/images/{{ post.image }}" alt="{{ post.title }}" /></div>
