@@ -232,11 +232,6 @@ a:hover {
   margin-top: 40px;
   margin-bottom: 40px;
 }
-.post-date {
-  display: block;
-  margin: -10px 0 10px;
-  color: #9a9a9a;
-}
 
 /* Related posts */
 .related {
@@ -295,6 +290,32 @@ a:hover {
 .pagination a:hover {
   text-decoration: none;
   background-color: #f5f5f5;
+}
+
+.post {
+
+  .post-header {
+    margin-bottom: 20px;
+
+    h1 {
+      margin-bottom: 0px;
+    }
+
+    h4 {
+      color: #9a9a9a;
+      text-align: right;
+
+      .post-date {
+        margin-top: 10px;
+      }
+
+      a {
+        color: #34beee;
+      }
+    }
+
+  }
+
 }
 
 
@@ -358,6 +379,15 @@ a:hover {
   .post {
     margin-top: 60px;
     margin-bottom: 60px;
+
+    .post-header {
+
+      h4 {
+        margin-top: 20px;
+        float: right;
+      }
+
+    }
   }
 
   /* Make pagination stand alone */
@@ -375,27 +405,6 @@ a:hover {
   > div {
     display: inline-block;
   }
-}
-
-.post {
-
-  .post-header {
-    margin-bottom: 20px;
-
-    h1 {
-      margin-bottom: 0px;
-    }
-
-    h3 {
-      margin-top: 0px;
-    }
-
-    .post-date {
-      margin-top: 10px;
-    }
-
-  }
-
 }
 
 .highlight  { background: #ffffff; }

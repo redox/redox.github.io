@@ -4,17 +4,19 @@ layout: default
 
 <section class="post">
   <div class="post-header">
-    <h1>{{ page.title }}</h1>
-    {% if page.link %}
-    <h3>{% unless page.link_broken == true %}<a href="http://{{ page.link }}">{% endunless %}{{ page.link }}{% unless page.link_broken == true %}</a>{% endunless %}</h3>
-    {% endif %}
-    <div class="post-date">
-      {% if page.period %}
-        {{ page.period }}
-      {% else %}
-        {{ page.date | date_to_string }}
+    <h4>
+      <span class="post-date">
+        {% if page.period %}
+          {{ page.period }}
+        {% else %}
+          {{ page.date | date_to_string }}
+        {% endif %}
+      </span>
+      {% if page.link %}
+      {% unless page.link_broken == true %}<a href="http://{{ page.link }}">{% endunless %}{{ page.link }}{% unless page.link_broken == true %}</a>{% endunless %}
       {% endif %}
-    </div>
+    </h4>
+    <h1>{{ page.title }}</h1>
     {% include _social.html %}
   </div>
   {{ content }}
