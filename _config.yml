@@ -32,7 +32,7 @@ timezone:    nil
 
 # Show future posts
 future:      false
-show_drafts: nil
+show_drafts: false
 limit_posts: 0
 pygments:    true
 
@@ -85,6 +85,11 @@ kramdown:
 
 redcloth:
   hard_breaks: true
+
+algolia:
+  index_name: blog_posts
+  application_id: sylvain
+  search_only_api_key: d962ad6512680f755df047e03a6af6fd
 
 #
 # jekyll-assets: see more at https://github.com/ixti/jekyll-assets

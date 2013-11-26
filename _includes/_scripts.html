@@ -32,3 +32,32 @@
   ga('create', '{{ site.inc.analytics.google.id }}', '{{ site.url }}');
   ga('send', 'pageview');
 </script>{% endif %}
+
+{% if site.algolia.application_id %}
+{% javascript algoliasearch.min %}
+{% javascript typeahead.min %}
+<script>
+  var apiClient = new AlgoliaSearch('{{ site.algolia.application_id }}', '{{ site.algolia.search_only_api_key }}');
+  var idx = apiClient.initIndex('{{ site.algolia.index_name }}');
+
+  function go() {
+    idx.search($('#blog-search-input').val(), function(success, content) {
+      if (success && content.hits.length > 0) {
+        window.location.href = content.hits[0].url;
+      }
+    });
+  }
+
+  $('#blog-search-input').typeahead({
+    name: 'blogposts',
+    remote: idx.getTypeaheadTransport(),
+    valueKey: 'title',
+  }).on('keydown', function(e) {
+    if (e.which == 13) {
+      go();
+    }
+  }).on('typeahead:selected', function(e) {
+    go();
+  }).focus();
+</script>
+{% endif %}
