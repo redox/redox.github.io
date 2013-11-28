@@ -24,9 +24,17 @@ layout: default
     {{ post.content }}
     {% endif %}
 
-    {% if post.image %}
-    <div class="text-center"><img src="/images/{{ post.image }}" alt="{{ post.title }}" /></div>
-    {% endif %}
+    <div class="text-center">
+    <a href="{{ post.url }}">
+      {% if post.excerpt_image %}
+      <img src="/images/{{ post.excerpt_image }}" alt="{{ post.title }}" />
+      {% else %}
+        {% if post.image %}
+        <img src="/images/{{ post.image }}" alt="{{ post.title }}" />
+        {% endif %}
+      {% endif %}
+    </a>
+    </div>
   </div>
   {% endfor %}
 </div>
