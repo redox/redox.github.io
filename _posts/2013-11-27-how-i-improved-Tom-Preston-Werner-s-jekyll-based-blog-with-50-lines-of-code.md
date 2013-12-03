@@ -20,7 +20,7 @@ What I need:
 
 What I don't want to do:
 
-* Write lots of code
+* Write lot of code
 * Spend my money
 * Have an awful list of links
 
@@ -43,7 +43,7 @@ List last posts in _ALL_ your pages, the old and ugly way.
 
 You may have heard about [lunr](http://lunrjs.com) and its [jekyll integration](https://github.com/slashdotdash/jekyll-lunr-js-search), you can find a demo [here](http://10consulting.com/search). It's pretty awesome but it lacks critical features for now (most critical: stemming doesn't replace typo-tolerance, matching terms are not highlighted [issue 25](https://github.com/olivernn/lunr.js/issues/25)).
 
-It's now about 3 months since I've joined [Algolia](http://www.algolia.com) and I cannot let a day go by without trying to plug our search-engine somewhere new. Wow, my personal blog is totally "somewhere" new. Let's give it a try; Algolia is _NOT_ a site-search engine; but it could be the perfect match to easily jump on old posts.
+It's been 3 months since I've joined [Algolia](http://www.algolia.com) and I cannot let a day go by without trying to plug our search-engine somewhere new. Wow, my personal blog is totally "somewhere" new. Let's give it a try; Algolia is _NOT_ a site-search engine; but it could be the perfect match to easily jump on old posts.
 
 WAIT! You said you don't want to pay anything; Algolia is a [paying service](http://www.algolia.com/pricing). You're right, just [send me an email](mailto:sylvain+from+algolia+dot+com) and I'll convert your 14-day free trial to an unlimited _custom_ free plan.
 
