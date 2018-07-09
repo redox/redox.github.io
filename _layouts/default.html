@@ -59,5 +59,19 @@
     </div>
 
     {% include _scripts.html %}
+    <script type="text/javascript">
+      var speedKit = {
+        appName: 'perfect-forest-14',
+        whitelist: [
+      /* START Default Whitelist */
+          {
+            host: /utard\.info$/
+          }
+      /* END Default Whitelist */
+        ],
+        blacklist: [],
+      };
+      !function(e,n,t,r,i,o){function c(){return"https://"+(r.appDomain||"{}.app.baqend.com".replace("{}",r.appName))+"/v1"}function u(e,n,t){var r;e.put(location.origin+"/"+n,new Response(null,{status:200,statusText:(r=t,JSON.stringify(r,function(e,n){return n instanceof RegExp?"regexp:/"+n.source+"/"+(n.flags||""):n}))}))}var s;"serviceWorker"in n&&(window.SpeedKit={subscribe:function(){return"Notification"in window?Notification.requestPermission().then(function(e){return"denied"===e?"denied":"granted"!==e?"undecided":n.serviceWorker.ready.then(function(e){var n=e.pushManager;return function(e){return e.getSubscription().then(function(e){return!!e})}(n).then(function(e){return!!e||function(e){return fetch(c()+"/config/VAPIDPublicKey").then(function(e){return e.arrayBuffer()}).then(function(e){return{applicationServerKey:e,userVisibleOnly:!0}}).then(function(n){return e.subscribe(n)}).then(function(e){var n={subscription:e,devicetype:"WebPush"};return fetch(c()+"/db/Device/register",{method:"POST",credentials:"include",body:JSON.stringify(n),headers:{"Content-Type":"application/json"}})}).then(function(e){return 200===e.status},function(){return!1})}(n)})}).then(function(e){return e?"registered":"unregistered"})}):Promise.resolve("unsupported")}},o=r.sw||"/sw.js",!r.disabled&&(!(s=n.userAgent.match(/chrome\/(\d+)/i))||n.userAgent.match(/edge\//i)||parseInt(s[1],10)>=61)?(n.serviceWorker.register(o,{scope:r.scope||"/"}).then(function(n){window.addEventListener("unload",function(){n.active&&n.active.postMessage({type:"send-cookies",data:e.cookie})})}),"undefined"!=typeof caches&&caches.open("baqend-speedkit").then(function(n){u(n,"com.baqend.speedkit.screen",{dpr:window.devicePixelRatio,width:window.screen.width}),u(n,"com.baqend.speedkit.config",r),u(n,"com.baqend.speedkit.cookie",e.cookie)})):n.serviceWorker.getRegistration(o).then(function(e){return!!e&&e.unregister()}))}(document,navigator,0,"undefined"!=typeof speedKit?speedKit:config);
+      </script>
   </body>
 </html>
