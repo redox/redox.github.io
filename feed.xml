@@ -1,0 +1,376 @@
+<?xml version="1.0"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Sylvain UTARD | Expert C++, Java, Big Data, Ruby</title>
+    <link>http://sylvain.utard.info</link>
+    <atom:link href="http://sylvain.utard.info/feed.xml" rel="self" type="application/rss+xml" />
+    <description></description>
+    <language>en-us</language>
+    <pubDate>Mon, 09 Jul 2018 20:46:52 +0000</pubDate>
+    <lastBuildDate>Mon, 09 Jul 2018 20:46:52 +0000</lastBuildDate>
+
+    
+    
+    <item>
+      <title>Testing your pure-JS project with Travis CI and its encrypted keys</title>
+      <link>http://sylvain.utard.info/2014/01/04/pure-js-project-with-travis-ci-and-its-encrypted-keys/</link>
+      <pubDate>Sat, 04 Jan 2014 00:00:00 +0000</pubDate>
+      <author></author>
+      <guid>http://sylvain.utard.info/2014/01/04/pure-js-project-with-travis-ci-and-its-encrypted-keys</guid>
+      <description>&lt;p&gt;I recently spend a few hours trying to test my JavaScript library with Travis CI and thought it was useful to share my experience with you. &lt;a href=&quot;https://travis-ci.org/&quot;&gt;Travis CI&lt;/a&gt; is a hosted continuous platform, it’s free for open-source projects and integrates well with GitHub.&lt;/p&gt;
+
+&lt;p&gt;Since Travis CI supports &lt;a href=&quot;http://about.travis-ci.org/docs/user/languages/javascript-with-nodejs/&quot;&gt;JavaScript with Node.JS&lt;/a&gt;, I first thought it will be easy. The problem was that I needed Travis CI’s &lt;a href=&quot;http://about.travis-ci.org/docs/user/encryption-keys/&quot;&gt;secure environment variables&lt;/a&gt; to be configured in order to setup the credentials used by the &lt;a href=&quot;https://github.com/algolia/algoliasearch-client-js#setup&quot;&gt;API client&lt;/a&gt; I was using.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;http://pivotal.github.io/jasmine/&quot;&gt;Jasmine&lt;/a&gt; doesn’t provide any way to access environment variables. To setup them, I used the templating feature of &lt;a href=&quot;https://github.com/gruntjs/grunt-contrib-jasmine&quot;&gt;grunt-contrib-jasmine&lt;/a&gt;, that allows you to build the &lt;code&gt;SpecRunner.html&lt;/code&gt; used by Jasmine. By default, the template is parsed as &lt;a href=&quot;underscorejs.org/#template&quot;&gt;underscore templates&lt;/a&gt;. You can pass options to your template using the &lt;code&gt;templateOptions&lt;/code&gt; option of your &lt;code&gt;Gruntfile.js&lt;/code&gt; jasmine tasks: they will be available via the &lt;code&gt;option&lt;/code&gt; object.&lt;/p&gt;
+&lt;!-- more --&gt;
+&lt;p&gt;I created a &lt;a href=&quot;https://gist.github.com/redox/8254948&quot;&gt;GIST&lt;/a&gt; summing it all up.&lt;/p&gt;
+&lt;script src=&#39;https://gist.github.com/8254948.js&#39;&gt;&lt;![CDATA[ ]]&gt;&lt;/script&gt;</description>
+    </item>
+    
+    
+    
+    <item>
+      <title>How I improved Tom Preston-Werner's jekyll-based blog with 50 lines of code</title>
+      <link>http://sylvain.utard.info/2013/11/27/how-i-improved-Tom-Preston-Werner-s-jekyll-based-blog-with-50-lines-of-code/</link>
+      <pubDate>Wed, 27 Nov 2013 00:00:00 +0000</pubDate>
+      <author></author>
+      <guid>http://sylvain.utard.info/2013/11/27/how-i-improved-Tom-Preston-Werner-s-jekyll-based-blog-with-50-lines-of-code</guid>
+      <description>&lt;p&gt;I recently &lt;a href=&quot;/2013/09/01/i-switched-to-jekyll/&quot;&gt;switched to Jekyll&lt;/a&gt; and was wondering how I could easily jump to old posts without displaying the famous “Last posts” menu.&lt;/p&gt;
+&lt;!-- more --&gt;
+&lt;p&gt;What I need:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Full-history access&lt;/li&gt;
+
+&lt;li&gt;Waste less time finding old posts&lt;/li&gt;
+
+&lt;li&gt;Simple UI but great UX&lt;/li&gt;
+
+&lt;li&gt;If I need to type something, typo-tolerance (I make typos…)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;What I don’t want to do:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Write lot of code&lt;/li&gt;
+
+&lt;li&gt;Spend my money&lt;/li&gt;
+
+&lt;li&gt;Have an awful list of links&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;1_menubased&quot;&gt;1. Menu-based&lt;/h3&gt;
+
+&lt;p&gt;List last posts in &lt;em&gt;ALL&lt;/em&gt; your pages, the old and ugly way.&lt;/p&gt;
+&lt;div class=&#39;highlight&#39;&gt;&lt;pre&gt;&lt;code class=&#39;html&#39;&gt;&lt;span class=&#39;nt&#39;&gt;&amp;lt;ul&lt;/span&gt; &lt;span class=&#39;na&#39;&gt;class=&lt;/span&gt;&lt;span class=&#39;s&#39;&gt;&amp;quot;last_posts&amp;quot;&lt;/span&gt;&lt;span class=&#39;nt&#39;&gt;&amp;gt;&lt;/span&gt;  
+  {% for post in site.posts limit:20 %}
+     &lt;span class=&#39;nt&#39;&gt;&amp;lt;li&amp;gt;&lt;/span&gt;  
+       &lt;span class=&#39;nt&#39;&gt;&amp;lt;span&amp;gt;&lt;/span&gt;{{ post.date | date_to_string }}&lt;span class=&#39;nt&#39;&gt;&amp;lt;/span&amp;gt;&lt;/span&gt; &lt;span class=&#39;ni&#39;&gt;&amp;amp;raquo;&lt;/span&gt;
+       &lt;span class=&#39;nt&#39;&gt;&amp;lt;a&lt;/span&gt; &lt;span class=&#39;na&#39;&gt;href=&lt;/span&gt;&lt;span class=&#39;s&#39;&gt;&amp;quot;{{ BASE_PATH }}{{ post.url }}&amp;quot;&lt;/span&gt;&lt;span class=&#39;nt&#39;&gt;&amp;gt;&lt;/span&gt;{{ post.title }}&lt;span class=&#39;nt&#39;&gt;&amp;lt;/a&amp;gt;&lt;/span&gt;  
+     &lt;span class=&#39;nt&#39;&gt;&amp;lt;/li&amp;gt;&lt;/span&gt;  
+  {% endfor %}  
+&lt;span class=&#39;nt&#39;&gt;&amp;lt;/ul&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h3 id=&quot;2_searchbased&quot;&gt;2. Search-based&lt;/h3&gt;
+
+&lt;p&gt;You may have heard about &lt;a href=&quot;http://lunrjs.com&quot;&gt;lunr&lt;/a&gt; and its &lt;a href=&quot;https://github.com/slashdotdash/jekyll-lunr-js-search&quot;&gt;jekyll integration&lt;/a&gt;, you can find a demo &lt;a href=&quot;http://10consulting.com/search&quot;&gt;here&lt;/a&gt;. It’s pretty awesome but it lacks critical features for now (most critical: stemming doesn’t replace typo-tolerance, matching terms are not highlighted &lt;a href=&quot;https://github.com/olivernn/lunr.js/issues/25&quot;&gt;issue 25&lt;/a&gt;).&lt;/p&gt;
+
+&lt;p&gt;It’s been 3 months since I’ve joined &lt;a href=&quot;http://www.algolia.com&quot;&gt;Algolia&lt;/a&gt; and I cannot let a day go by without trying to plug our search-engine somewhere new. Wow, my personal blog is totally “somewhere” new. Let’s give it a try; Algolia is &lt;em&gt;NOT&lt;/em&gt; a site-search engine; but it could be the perfect match to easily jump on old posts.&lt;/p&gt;
+
+&lt;p&gt;WAIT! You said you don’t want to pay anything; Algolia is a &lt;a href=&quot;http://www.algolia.com/pricing&quot;&gt;paying service&lt;/a&gt;. You’re right, just &lt;a href=&quot;mailto:sylvain+from+algolia+dot+com&quot;&gt;send me an email&lt;/a&gt; and I’ll convert your 14-day free trial to an unlimited &lt;em&gt;custom&lt;/em&gt; free plan.&lt;/p&gt;
+
+&lt;p&gt;First, I need to patch my dependencies (I use a &lt;code&gt;Gemfile&lt;/code&gt; and you should too :p):&lt;/p&gt;
+&lt;script src=&#39;https://gist.github.com/7664465.js?file=Gemfile&#39;&gt;&lt;![CDATA[ ]]&gt;&lt;/script&gt;
+&lt;p&gt;Let’s make it the proper way and add all configuration stuff in my &lt;code&gt;_config.yml&lt;/code&gt;.&lt;/p&gt;
+&lt;script src=&#39;https://gist.github.com/7664465.js?file=_config.yml&#39;&gt;&lt;![CDATA[ ]]&gt;&lt;/script&gt;
+&lt;p&gt;Reindex all post titles while publishing to Github’s &lt;code&gt;gh-pages&lt;/code&gt; branch.&lt;/p&gt;
+&lt;script src=&#39;https://gist.github.com/7664465.js?file=Rakefile&#39;&gt;&lt;![CDATA[ ]]&gt;&lt;/script&gt;
+&lt;p&gt;I used a &lt;a href=&quot;https://github.com/algolia/typeahead.js&quot;&gt;patched version&lt;/a&gt; of Typeahead.js to be able to use it with an Algolia backend (see the &lt;a href=&quot;https://github.com/twitter/typeahead.js/pull/473&quot;&gt;pull-request&lt;/a&gt;).&lt;/p&gt;
+&lt;script src=&#39;https://gist.github.com/7664465.js?file=layout.html&#39;&gt;&lt;![CDATA[ ]]&gt;&lt;/script&gt;
+&lt;p&gt;&lt;a href=&quot;http://redox.github.io/mojombo&quot;&gt;Live demo&lt;/a&gt; with &lt;a href=&quot;http://tom.preston-werner.com/&quot;&gt;Tom Preston-Werner’s blog&lt;/a&gt;, CEO of Github and creator of Jekyll. You can find the &lt;a href=&quot;https://github.com/redox/mojombo/commit/070de82864fb17fb1f36f623e3136e398503370c&quot;&gt;whole patch&lt;/a&gt; on Github.&lt;/p&gt;
+&lt;iframe src=&#39;http://redox.github.io/mojombo/&#39; style=&#39;width: 100%; height: 600px; border: 2px solid #ccc;&#39;&gt; &lt;/iframe&gt;</description>
+    </item>
+    
+    
+    
+    <item>
+      <title>Search for icons from Font Awesome, Glyphicons, IcoMoon, and Ionicons</title>
+      <link>http://sylvain.utard.info/2013/11/05/glyphsearch/</link>
+      <pubDate>Tue, 05 Nov 2013 00:00:00 +0000</pubDate>
+      <author></author>
+      <guid>http://sylvain.utard.info/2013/11/05/glyphsearch</guid>
+      <description>&lt;p&gt;A few days ago, I’ve discovered &lt;a href=&quot;http://glyphsearch.com&quot;&gt;glyphsearch.com&lt;/a&gt; reading &lt;a href=&quot;http://news.ycombinator.com&quot;&gt;HN&lt;/a&gt;: totally awesome! I can’t count the number of times I opened my browser on &lt;a href=&quot;http://fontawesome.io&quot;&gt;fontawesome.io&lt;/a&gt; or &lt;a href=&quot;http://getbootstrap.com&quot;&gt;getbootstrap.com&lt;/a&gt; to find an icon. That’s just what all developers need :)&lt;/p&gt;
+
+&lt;p&gt;I took the liberty of forking the project to plug &lt;a href=&quot;http://www.algolia.com/doc/rest_api&quot;&gt;Algolia’s Search API&lt;/a&gt; and provide a better search experience: &lt;a href=&quot;https://github.com/thomaspark/glyphsearch/pull/1&quot;&gt;https://github.com/thomaspark/glyphsearch/pull/1&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;New features includes:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;highlighting&lt;/li&gt;
+
+&lt;li&gt;typo-tolerance&lt;/li&gt;
+
+&lt;li&gt;matching fields priority (matching on the name is better than matching on the tags)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;I hope you’ll like it !&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;EDIT&lt;/em&gt;: &lt;a href=&quot;https://github.com/thomaspark/glyphsearch/pull/1#issuecomment-27910904&quot;&gt;merged&lt;/a&gt;!&lt;/p&gt;</description>
+    </item>
+    
+    
+    
+    <item>
+      <title>My new job at Algolia</title>
+      <link>http://sylvain.utard.info/2013/09/15/algolia/</link>
+      <pubDate>Sun, 15 Sep 2013 00:00:00 +0000</pubDate>
+      <author></author>
+      <guid>http://sylvain.utard.info/2013/09/15/algolia</guid>
+      <description>&lt;p&gt;On September 15th, after 5 years at &lt;a href=&quot;http://www.exalead.com/software&quot;&gt;Exalead&lt;/a&gt; managing a team of 20+ developers in charge of core technologies; I joined &lt;a href=&quot;http://www.algolia.com&quot;&gt;Algolia&lt;/a&gt;. Algolia has been founded 1 year ago by Nicolas Dessaigne and Julien Lemoine, two past colleagues from Exalead. Algolia provides a fully hosted full-text, numerical and faceted search service through a REST API.&lt;/p&gt;
+
+&lt;p&gt;As all newly-founded startups, lots of things - technical &lt;em&gt;or not&lt;/em&gt; - to do; lots of challenges to face; lots of ideas to prioritize; lots of code to write and redo.&lt;/p&gt;
+
+&lt;p&gt;I’m really proud to be the first employee of Algolia and hope my 5-years experience on search technologies will contribute to Algolia’s success story.&lt;/p&gt;
+
+&lt;p&gt;Long live Algolia!&lt;/p&gt;
+
+&lt;p&gt;PS: I’ll try to use this new start to keep a sustained blogging tempo.&lt;/p&gt;</description>
+    </item>
+    
+    
+    
+    <item>
+      <title>I switched to Jekyll</title>
+      <link>http://sylvain.utard.info/2013/09/01/i-switched-to-jekyll/</link>
+      <pubDate>Sun, 01 Sep 2013 00:00:00 +0000</pubDate>
+      <author></author>
+      <guid>http://sylvain.utard.info/2013/09/01/i-switched-to-jekyll</guid>
+      <description>&lt;p&gt;As lots of nerds, I recently switched to jekyll for my personal blog.&lt;/p&gt;
+
+&lt;p&gt;What’s funny is that I never “really” blogged before. My previous personal website was a simple PHP script I wrote 5+ years ago where I was dumping screenshots and one-liners about my off-hours web developments.&lt;/p&gt;
+
+&lt;p&gt;OK Jekyll, let’s say I wannabe a blogger because:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;I want to share more, not only one-liners &amp;amp; screenshots&lt;/li&gt;
+
+&lt;li&gt;What I do today may interest lot more people than before&lt;/li&gt;
+
+&lt;li&gt;I ♥ git and github&lt;/li&gt;
+
+&lt;li&gt;Jekyll simply does the job&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;See ya !&lt;/p&gt;</description>
+    </item>
+    
+    
+    
+    <item>
+      <title>New responsabilities</title>
+      <link>http://sylvain.utard.info/2012/12/31/exalead-new-responsabilities/</link>
+      <pubDate>Mon, 31 Dec 2012 00:00:00 +0000</pubDate>
+      <author></author>
+      <guid>http://sylvain.utard.info/2012/12/31/exalead-new-responsabilities</guid>
+      <description>&lt;p&gt;Not enougth time this year for my off-hours project. Lots of new responsabilities and challenges for the release of version 2013 and 2013x of CloudView. 2 major releases + 6 minor releases !!&lt;/p&gt;</description>
+    </item>
+    
+    
+    
+    <item>
+      <title>Still surveys...</title>
+      <link>http://sylvain.utard.info/2011/10/01/surveys/</link>
+      <pubDate>Sat, 01 Oct 2011 00:00:00 +0000</pubDate>
+      <author></author>
+      <guid>http://sylvain.utard.info/2011/10/01/surveys</guid>
+      <description>&lt;p&gt;Let’s give a try to Ruby on Rails + Redis + Solr to build surveys with the french politicians based on french blogs and the web more generally. (next-year election campaign inside)&lt;/p&gt;</description>
+    </item>
+    
+    
+    
+    <item>
+      <title>Anydeal</title>
+      <link>http://sylvain.utard.info/2011/05/01/anydeal/</link>
+      <pubDate>Sun, 01 May 2011 00:00:00 +0000</pubDate>
+      <author></author>
+      <guid>http://sylvain.utard.info/2011/05/01/anydeal</guid>
+      <description>&lt;p&gt;Give Rails+Solr a try. Deals search engine + advanced refines + smart alerts. Buying deals will never be as before !&lt;/p&gt;</description>
+    </item>
+    
+    
+    
+    <item>
+      <title>iEyes</title>
+      <link>http://sylvain.utard.info/2011/02/01/ieyes/</link>
+      <pubDate>Tue, 01 Feb 2011 00:00:00 +0000</pubDate>
+      <author></author>
+      <guid>http://sylvain.utard.info/2011/02/01/ieyes</guid>
+      <description>&lt;p&gt;&lt;span style=&#39;text-decoration: line-through&#39;&gt;Xeyes clone, on the Mac App Store.&lt;/span&gt;&lt;/p&gt;
+
+&lt;p&gt;Rejected&lt;/p&gt;</description>
+    </item>
+    
+    
+    
+    <item>
+      <title>My weather</title>
+      <link>http://sylvain.utard.info/2011/01/31/my-weather/</link>
+      <pubDate>Mon, 31 Jan 2011 00:00:00 +0000</pubDate>
+      <author></author>
+      <guid>http://sylvain.utard.info/2011/01/31/my-weather</guid>
+      <description>&lt;p&gt;My first application on the Mac App Store.&lt;/p&gt;</description>
+    </item>
+    
+    
+    
+    <item>
+      <title>Objective-C here I am</title>
+      <link>http://sylvain.utard.info/2010/11/01/objective-c/</link>
+      <pubDate>Mon, 01 Nov 2010 00:00:00 +0000</pubDate>
+      <author></author>
+      <guid>http://sylvain.utard.info/2010/11/01/objective-c</guid>
+      <description>&lt;p&gt;I’ve finally started developing under Mac OS, Objective-C, Cocoa, XCode, Interface Builder.&lt;/p&gt;</description>
+    </item>
+    
+    
+    
+    <item>
+      <title>Yahoo! BOSS-based search engine with Rails in 30min</title>
+      <link>http://sylvain.utard.info/2010/06/01/boss-based-search-engine/</link>
+      <pubDate>Tue, 01 Jun 2010 00:00:00 +0000</pubDate>
+      <author></author>
+      <guid>http://sylvain.utard.info/2010/06/01/boss-based-search-engine</guid>
+      <description>&lt;p&gt;Just released a Yahoo! BOSS-based search engine prototype in Rails.&lt;/p&gt;
+
+&lt;p&gt;GitHub repository: &lt;a href=&quot;http://github.com/redox/Yahoo--BOSS-on-Rails&quot;&gt;redox/Yahoo–BOSS-on-Rails&lt;/a&gt;&lt;/p&gt;</description>
+    </item>
+    
+    
+    
+    <item>
+      <title>WorldCup 2010 SEO</title>
+      <link>http://sylvain.utard.info/2010/01/01/mondial2k10/</link>
+      <pubDate>Fri, 01 Jan 2010 00:00:00 +0000</pubDate>
+      <author></author>
+      <guid>http://sylvain.utard.info/2010/01/01/mondial2k10</guid>
+      <description>&lt;p&gt;Is it possible to vampirize traffic with an international sport event? Study with the World Cup 2010.&lt;/p&gt;</description>
+    </item>
+    
+    
+    
+    <item>
+      <title>RailsRumble '09</title>
+      <link>http://sylvain.utard.info/2009/11/01/railsrumble-09/</link>
+      <pubDate>Sun, 01 Nov 2009 00:00:00 +0000</pubDate>
+      <author></author>
+      <guid>http://sylvain.utard.info/2009/11/01/railsrumble-09</guid>
+      <description>&lt;p&gt;The RailsRumble is a 48h contest where the goal is to build a Web application in Ruby on Rails in order to promote the community.&lt;/p&gt;
+
+&lt;p&gt;This year, we (Heavyweight rockstars) have made an iPhone application + web site. There were over 230 teams and we finished 15th.&lt;/p&gt;
+
+&lt;p&gt;Our tagline: “Ask and Tell Your iPhone where the party at!”&lt;/p&gt;</description>
+    </item>
+    
+    
+    
+    <item>
+      <title>Live on BanKiZ on Facebook</title>
+      <link>http://sylvain.utard.info/2009/11/01/liveonbankiz-facebook/</link>
+      <pubDate>Sun, 01 Nov 2009 00:00:00 +0000</pubDate>
+      <author></author>
+      <guid>http://sylvain.utard.info/2009/11/01/liveonbankiz-facebook</guid>
+      <description>&lt;p&gt;Another Facebook application in RoR.&lt;/p&gt;</description>
+    </item>
+    
+    
+    
+    <item>
+      <title>First facebook app</title>
+      <link>http://sylvain.utard.info/2009/10/01/first-facebook-app/</link>
+      <pubDate>Thu, 01 Oct 2009 00:00:00 +0000</pubDate>
+      <author></author>
+      <guid>http://sylvain.utard.info/2009/10/01/first-facebook-app</guid>
+      <description>&lt;p&gt;A small application RoR + Facebook to test what is possible.&lt;/p&gt;</description>
+    </item>
+    
+    
+    
+    <item>
+      <title>RailsRumble '08</title>
+      <link>http://sylvain.utard.info/2008/10/31/railsrumble-08/</link>
+      <pubDate>Fri, 31 Oct 2008 00:00:00 +0000</pubDate>
+      <author></author>
+      <guid>http://sylvain.utard.info/2008/10/31/railsrumble-08</guid>
+      <description>&lt;p&gt;This weekend has held the contest Railsrumble (Railsrumble 2008) and I had the chance to participate. The goal was simple: 48 hours to create a kick-ass web application.&lt;/p&gt;
+
+&lt;p&gt;The 240 teams faced were composed of 1 to 4 members. I’m teaming up with Ivan Schneider and Jessy Bernal from Massive Brain Games.&lt;/p&gt;
+
+&lt;p&gt;Our project is called rbDB and was developed in Ruby on Rails. rbDB is a RoR mysql administrator based on conventions.&lt;/p&gt;
+&lt;iframe allowFullScreen=&#39;true&#39; frameborder=&#39;0&#39; height=&#39;281&#39; mozallowfullscreen=&#39;true&#39; src=&#39;http://player.vimeo.com/video/2046491 &#39; webkitAllowFullScreen=&#39;true&#39; width=&#39;500&#39; /&gt;</description>
+    </item>
+    
+    
+    
+    <item>
+      <title>Live on BanKiZ v2</title>
+      <link>http://sylvain.utard.info/2008/10/01/liveonbankiz-v2/</link>
+      <pubDate>Wed, 01 Oct 2008 00:00:00 +0000</pubDate>
+      <author></author>
+      <guid>http://sylvain.utard.info/2008/10/01/liveonbankiz-v2</guid>
+      <description>&lt;p&gt;It has been 3 years since I developped for the last time for LiveOnBanKiZ… Lack of motivation? Lack of time?&lt;/p&gt;
+
+&lt;p&gt;Version 2 of Live On BanKiZ comes out completely new!&lt;/p&gt;</description>
+    </item>
+    
+    
+    
+    <item>
+      <title>Exalead</title>
+      <link>http://sylvain.utard.info/2008/09/15/exalead/</link>
+      <pubDate>Mon, 15 Sep 2008 00:00:00 +0000</pubDate>
+      <author></author>
+      <guid>http://sylvain.utard.info/2008/09/15/exalead</guid>
+      <description>&lt;p&gt;Work on Exalead’s core engine: natural language processing, indexing and text mining.&lt;/p&gt;</description>
+    </item>
+    
+    
+    
+    <item>
+      <title>The global sourcing team</title>
+      <link>http://sylvain.utard.info/2008/08/01/globuyteam/</link>
+      <pubDate>Fri, 01 Aug 2008 00:00:00 +0000</pubDate>
+      <author></author>
+      <guid>http://sylvain.utard.info/2008/08/01/globuyteam</guid>
+      <description>&lt;p&gt;Networking has never been so wide, quick and easy between buyers! Globuyteam is the first global sourcing network enabling professional buyers to exchange information directly with other buyers having common purchases.&lt;/p&gt;
+
+&lt;p&gt;Globuyteam is an exclusive networking solution for the sourcing and purchasing community worldwide.&lt;/p&gt;</description>
+    </item>
+    
+    
+    
+    <item>
+      <title>Multiplayer rails game: find the title of your favorite movies!</title>
+      <link>http://sylvain.utard.info/2007/11/01/movease/</link>
+      <pubDate>Thu, 01 Nov 2007 00:00:00 +0000</pubDate>
+      <author></author>
+      <guid>http://sylvain.utard.info/2007/11/01/movease</guid>
+      <description>&lt;p&gt;Movease.fr is a multi-player game whose goal is to find the title, director and the 2 main actors of the extract of the film.&lt;/p&gt;
+
+&lt;p&gt;The game was developed with Ruby on Rails and uses the famous JavaScript library Prototype.&lt;/p&gt;</description>
+    </item>
+    
+    
+    
+    <item>
+      <title>Find a host</title>
+      <link>http://sylvain.utard.info/2007/08/01/hostmedudes/</link>
+      <pubDate>Wed, 01 Aug 2007 00:00:00 +0000</pubDate>
+      <author></author>
+      <guid>http://sylvain.utard.info/2007/08/01/hostmedudes</guid>
+      <description>&lt;p&gt;Hostmedudes is a community of travel lovers from all around the world who share common values of generosity, open-mindedness and freedom. Find free accommodation for your trips, find travel buddies and local buddies, meet travel lovers, keep up with friends you met during your trips, share travel photos, find travel tips… Enjoy the Hostmedudes way of life!&lt;/p&gt;</description>
+    </item>
+    
+    
+
+  </channel> 
+</rss>

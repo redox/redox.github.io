@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sylvain UTARD &mdash; Expert C++, Java, Big Data, Ruby</title>
+    <link rel="stylesheet" href="/assets/hyde.css">
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans:300,400italic,400,600,700|Abril+Fatface">
+    <link href="/feed.xml" rel="alternate" type="application/rss+xml" title="Sylvain UTARD" />
+    <meta name="title" content="Sylvain UTARD">
+    <link rel="canonical" href="http://sylvain.utard.info/">
+    <meta property="og:title" content="Sylvain UTARD"/>
+    <meta property="og:url" content="http://sylvain.utard.info/"/>
+    
+    <meta property="og:site_name" content="Sylvain UTARD">
+  </head>
+  <body>
+
+    <header class="masthead">
+      <div class="masthead-searchform">
+        <input type="text" name="q" class="search-input" placeholder="Search" id="blog-search-input" />
+      </div>
+      <div class="masthead-inner">
+        <h1><a href="/">Sylvain UTARD</a></h1>
+        <p class="lead">
+          #geek #passionate #entrepreneur #french #epita
+          #c++ #java #ruby #rails #js
+          #textmining #searchengine #lucene #bigdata #nosql
+        
+          <br />
+          <br />
+
+          I'm currently <em>VP of engineering</em> at <a href="http://www.algolia.com">Algolia</a>.
+        </p>
+
+        <div class="colophon">
+          <ul class="colophon-links">
+            <li>
+              <a href="http://www.linkedin.com/in/sylvainutard">Contact me on linkedin</a>
+            </li>
+            <li>
+              <a href="https://twitter.com/sylvainutard">Follow me on twitter</a>
+            </li>
+          </ul>
+          <p>
+            <script type="text/javascript">document.write('sylvain' + '.' + 'utard' + '@' + 'gmail.com')</script><br />
+            <script type="text/javascript">document.write('(+33) 6 ' + '15 14 27' + ' 47')</script>
+          </p>
+        </div>
+
+      </div>
+    </header>
+
+    <div class="content container">
+      <div class="posts">
+  
+  <div class="post">
+    <div class="post-header">
+      <h4>
+        <span class="post-date">
+          
+            04 Jan 2014
+          
+        </span>
+      </h4>
+      <h1><a href="/2014/01/04/pure-js-project-with-travis-ci-and-its-encrypted-keys/">Testing your pure-JS project with Travis CI and its encrypted keys</a></h1>
+    </div>
+
+    
+    <p>I recently spend a few hours trying to test my JavaScript library with Travis CI and thought it was useful to share my experience with you. <a href="https://travis-ci.org/">Travis CI</a> is a hosted continuous platform, it’s free for open-source projects and integrates well with GitHub.</p>
+
+<p>Since Travis CI supports <a href="http://about.travis-ci.org/docs/user/languages/javascript-with-nodejs/">JavaScript with Node.JS</a>, I first thought it will be easy. The problem was that I needed Travis CI’s <a href="http://about.travis-ci.org/docs/user/encryption-keys/">secure environment variables</a> to be configured in order to setup the credentials used by the <a href="https://github.com/algolia/algoliasearch-client-js#setup">API client</a> I was using.</p>
+
+<p><a href="http://pivotal.github.io/jasmine/">Jasmine</a> doesn’t provide any way to access environment variables. To setup them, I used the templating feature of <a href="https://github.com/gruntjs/grunt-contrib-jasmine">grunt-contrib-jasmine</a>, that allows you to build the <code>SpecRunner.html</code> used by Jasmine. By default, the template is parsed as <a href="underscorejs.org/#template">underscore templates</a>. You can pass options to your template using the <code>templateOptions</code> option of your <code>Gruntfile.js</code> jasmine tasks: they will be available via the <code>option</code> object.</p>
+    
+
+    <div class="text-center">
+    <a href="/2014/01/04/pure-js-project-with-travis-ci-and-its-encrypted-keys/">
+      
+        
+      
+    </a>
+    </div>
+  </div>
+  
+  <div class="post">
+    <div class="post-header">
+      <h4>
+        <span class="post-date">
+          
+            27 Nov 2013
+          
+        </span>
+      </h4>
+      <h1><a href="/2013/11/27/how-i-improved-Tom-Preston-Werner-s-jekyll-based-blog-with-50-lines-of-code/">How I improved Tom Preston-Werner's jekyll-based blog with 50 lines of code</a></h1>
+    </div>
+
+    
+    <p>I recently <a href="/2013/09/01/i-switched-to-jekyll/">switched to Jekyll</a> and was wondering how I could easily jump to old posts without displaying the famous “Last posts” menu.</p>
+    
+
+    <div class="text-center">
+    <a href="/2013/11/27/how-i-improved-Tom-Preston-Werner-s-jekyll-based-blog-with-50-lines-of-code/">
+      
+      <img src="/images/mojombo.png" alt="How I improved Tom Preston-Werner's jekyll-based blog with 50 lines of code" />
+      
+    </a>
+    </div>
+  </div>
+  
+  <div class="post">
+    <div class="post-header">
+      <h4>
+        <span class="post-date">
+          
+            05 Nov 2013
+          
+        </span>
+      </h4>
+      <h1><a href="/2013/11/05/glyphsearch/">Search for icons from Font Awesome, Glyphicons, IcoMoon, and Ionicons</a></h1>
+    </div>
+
+    
+    <p>A few days ago, I’ve discovered <a href="http://glyphsearch.com">glyphsearch.com</a> reading <a href="http://news.ycombinator.com">HN</a>: totally awesome! I can’t count the number of times I opened my browser on <a href="http://fontawesome.io">fontawesome.io</a> or <a href="http://getbootstrap.com">getbootstrap.com</a> to find an icon. That’s just what all developers need :)</p>
+
+<p>I took the liberty of forking the project to plug <a href="http://www.algolia.com/doc/rest_api">Algolia’s Search API</a> and provide a better search experience: <a href="https://github.com/thomaspark/glyphsearch/pull/1">https://github.com/thomaspark/glyphsearch/pull/1</a>.</p>
+
+<p>New features includes:</p>
+
+<ul>
+<li>highlighting</li>
+
+<li>typo-tolerance</li>
+
+<li>matching fields priority (matching on the name is better than matching on the tags)</li>
+</ul>
+
+<p>I hope you’ll like it !</p>
+
+<p><em>EDIT</em>: <a href="https://github.com/thomaspark/glyphsearch/pull/1#issuecomment-27910904">merged</a>!</p>
+    
+
+    <div class="text-center">
+    <a href="/2013/11/05/glyphsearch/">
+      
+        
+        <img src="/images/glyphsearch.png" alt="Search for icons from Font Awesome, Glyphicons, IcoMoon, and Ionicons" />
+        
+      
+    </a>
+    </div>
+  </div>
+  
+  <div class="post">
+    <div class="post-header">
+      <h4>
+        <span class="post-date">
+          
+            15 Sep 2013
+          
+        </span>
+      </h4>
+      <h1><a href="/2013/09/15/algolia/">My new job at Algolia</a></h1>
+    </div>
+
+    
+    <p>On September 15th, after 5 years at <a href="http://www.exalead.com/software">Exalead</a> managing a team of 20+ developers in charge of core technologies; I joined <a href="http://www.algolia.com">Algolia</a>. Algolia has been founded 1 year ago by Nicolas Dessaigne and Julien Lemoine, two past colleagues from Exalead. Algolia provides a fully hosted full-text, numerical and faceted search service through a REST API.</p>
+
+<p>As all newly-founded startups, lots of things - technical <em>or not</em> - to do; lots of challenges to face; lots of ideas to prioritize; lots of code to write and redo.</p>
+
+<p>I’m really proud to be the first employee of Algolia and hope my 5-years experience on search technologies will contribute to Algolia’s success story.</p>
+
+<p>Long live Algolia!</p>
+
+<p>PS: I’ll try to use this new start to keep a sustained blogging tempo.</p>
+    
+
+    <div class="text-center">
+    <a href="/2013/09/15/algolia/">
+      
+        
+        <img src="/images/algolia256x80.png" alt="My new job at Algolia" />
+        
+      
+    </a>
+    </div>
+  </div>
+  
+</div>
+
+<!-- Pagination links -->
+<div class="pagination">
+  
+    <a href="/page2" class="older">Older</a>
+  
+  
+    <span class="previous">Newer</span>
+  
+</div>
+
+    </div>
+
+    <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+
+
+<script>
+    (function(d, t) {
+        var g = d.createElement(t),
+            s = d.getElementsByTagName(t)[0];
+        g.src = '//hnbutton.appspot.com/static/hn.min.js';
+        s.parentNode.insertBefore(g, s);
+    }(document, 'script'));
+</script>
+
+<script type="text/javascript"> 
+  var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+  document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script> 
+<script type="text/javascript"> 
+  var pageTracker = _gat._getTracker("UA-2837949-2");
+  pageTracker._initData();
+  pageTracker._trackPageview();
+</script>
+
+
+
+<script src="/assets/algoliasearch.min.js"></script>
+<script src="/assets/typeahead.min.js"></script>
+<script>
+  var apiClient = new AlgoliaSearch('sylvain', 'd962ad6512680f755df047e03a6af6fd');
+  var idx = apiClient.initIndex('blog_posts');
+
+  function go() {
+    idx.search($('#blog-search-input').val(), function(success, content) {
+      if (success && content.hits.length > 0) {
+        window.location.href = content.hits[0].url;
+      }
+    });
+  }
+
+  $('#blog-search-input').typeahead({
+    name: 'blogposts',
+    remote: idx.getTypeaheadTransport(),
+    valueKey: 'title',
+  }).on('keydown', function(e) {
+    if (e.which == 13) {
+      go();
+    }
+  }).on('typeahead:selected', function(e) {
+    go();
+  }).focus();
+</script>
+
+
+    <script type="text/javascript">
+      var speedKit = {
+        appName: 'perfect-forest-14',
+        whitelist: [
+      /* START Default Whitelist */
+          {
+            host: /utard\.info$/
+          }
+      /* END Default Whitelist */
+        ],
+        blacklist: [],
+      };
+      !function(e,n,t,r,i,o){function c(){return"https://"+(r.appDomain||"{}.app.baqend.com".replace("{}",r.appName))+"/v1"}function u(e,n,t){var r;e.put(location.origin+"/"+n,new Response(null,{status:200,statusText:(r=t,JSON.stringify(r,function(e,n){return n instanceof RegExp?"regexp:/"+n.source+"/"+(n.flags||""):n}))}))}var s;"serviceWorker"in n&&(window.SpeedKit={subscribe:function(){return"Notification"in window?Notification.requestPermission().then(function(e){return"denied"===e?"denied":"granted"!==e?"undecided":n.serviceWorker.ready.then(function(e){var n=e.pushManager;return function(e){return e.getSubscription().then(function(e){return!!e})}(n).then(function(e){return!!e||function(e){return fetch(c()+"/config/VAPIDPublicKey").then(function(e){return e.arrayBuffer()}).then(function(e){return{applicationServerKey:e,userVisibleOnly:!0}}).then(function(n){return e.subscribe(n)}).then(function(e){var n={subscription:e,devicetype:"WebPush"};return fetch(c()+"/db/Device/register",{method:"POST",credentials:"include",body:JSON.stringify(n),headers:{"Content-Type":"application/json"}})}).then(function(e){return 200===e.status},function(){return!1})}(n)})}).then(function(e){return e?"registered":"unregistered"})}):Promise.resolve("unsupported")}},o=r.sw||"/sw.js",!r.disabled&&(!(s=n.userAgent.match(/chrome\/(\d+)/i))||n.userAgent.match(/edge\//i)||parseInt(s[1],10)>=61)?(n.serviceWorker.register(o,{scope:r.scope||"/"}).then(function(n){window.addEventListener("unload",function(){n.active&&n.active.postMessage({type:"send-cookies",data:e.cookie})})}),"undefined"!=typeof caches&&caches.open("baqend-speedkit").then(function(n){u(n,"com.baqend.speedkit.screen",{dpr:window.devicePixelRatio,width:window.screen.width}),u(n,"com.baqend.speedkit.config",r),u(n,"com.baqend.speedkit.cookie",e.cookie)})):n.serviceWorker.getRegistration(o).then(function(e){return!!e&&e.unregister()}))}(document,navigator,0,"undefined"!=typeof speedKit?speedKit:config);
+      </script>
+  </body>
+</html>

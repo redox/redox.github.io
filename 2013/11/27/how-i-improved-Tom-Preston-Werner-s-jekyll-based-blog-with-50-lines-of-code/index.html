@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>How I improved Tom Preston-Werner's jekyll-based blog with 50 lines of code &mdash; Sylvain UTARD</title>
+    <link rel="stylesheet" href="/assets/hyde.css">
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans:300,400italic,400,600,700|Abril+Fatface">
+    <link href="/feed.xml" rel="alternate" type="application/rss+xml" title="Sylvain UTARD" />
+    <meta name="title" content="How I improved Tom Preston-Werner's jekyll-based blog with 50 lines of code ">
+    <link rel="canonical" href="http://sylvain.utard.info/2013/11/27/how-i-improved-Tom-Preston-Werner-s-jekyll-based-blog-with-50-lines-of-code/">
+    <meta property="og:title" content="How I improved Tom Preston-Werner's jekyll-based blog with 50 lines of code "/>
+    <meta property="og:url" content="http://sylvain.utard.info/2013/11/27/how-i-improved-Tom-Preston-Werner-s-jekyll-based-blog-with-50-lines-of-code/"/>
+    
+    <meta property="og:description" content="<p>I recently <a href="/2013/09/01/i-switched-to-jekyll/">switched to Jekyll</a> and was wondering how I could easily jump to old posts without displaying the famous “Last posts” menu.</p>"/>
+    <meta name="description" content="<p>I recently <a href="/2013/09/01/i-switched-to-jekyll/">switched to Jekyll</a> and was wondering how I could easily jump to old posts without displaying the famous “Last posts” menu.</p>"/>
+    
+    <meta property="og:site_name" content="Sylvain UTARD">
+  </head>
+  <body>
+
+    <header class="masthead">
+      <div class="masthead-searchform">
+        <input type="text" name="q" class="search-input" placeholder="Search" id="blog-search-input" />
+      </div>
+      <div class="masthead-inner">
+        <h1><a href="/">Sylvain UTARD</a></h1>
+        <p class="lead">
+          #geek #passionate #entrepreneur #french #epita
+          #c++ #java #ruby #rails #js
+          #textmining #searchengine #lucene #bigdata #nosql
+        
+          <br />
+          <br />
+
+          I'm currently <em>VP of engineering</em> at <a href="http://www.algolia.com">Algolia</a>.
+        </p>
+
+        <div class="colophon">
+          <ul class="colophon-links">
+            <li>
+              <a href="http://www.linkedin.com/in/sylvainutard">Contact me on linkedin</a>
+            </li>
+            <li>
+              <a href="https://twitter.com/sylvainutard">Follow me on twitter</a>
+            </li>
+          </ul>
+          <p>
+            <script type="text/javascript">document.write('sylvain' + '.' + 'utard' + '@' + 'gmail.com')</script><br />
+            <script type="text/javascript">document.write('(+33) 6 ' + '15 14 27' + ' 47')</script>
+          </p>
+        </div>
+
+      </div>
+    </header>
+
+    <div class="content container">
+      <section class="post">
+  <div class="post-header">
+    <h4>
+      <span class="post-date">
+        
+          27 Nov 2013
+        
+      </span>
+      
+      <a href="http://redox.github.io/mojombo">redox.github.io/mojombo</a>
+      
+    </h4>
+    <h1>How I improved Tom Preston-Werner's jekyll-based blog with 50 lines of code</h1>
+    
+<div class="social">
+    
+    <div>
+        <a href="https://twitter.com/share" class="twitter-share-button"  data-text="How I improved Tom Preston-Werner's jekyll-based blog with 50 lines of code" data-related="">Tweet</a>
+    </div>
+    
+
+    
+
+    
+    
+    
+    <div>
+        <a href="http://news.ycombinator.com/submit" class="hn-share-button">Vote on HN</a>
+    </div>
+    
+
+    
+    <div>
+        <script type="text/javascript" src="http://www.reddit.com/static/button/button1.js"></script>
+    </div>
+    
+</div>
+
+
+  </div>
+  <p>I recently <a href="/2013/09/01/i-switched-to-jekyll/">switched to Jekyll</a> and was wondering how I could easily jump to old posts without displaying the famous “Last posts” menu.</p>
+<!-- more -->
+<p>What I need:</p>
+
+<ul>
+<li>Full-history access</li>
+
+<li>Waste less time finding old posts</li>
+
+<li>Simple UI but great UX</li>
+
+<li>If I need to type something, typo-tolerance (I make typos…)</li>
+</ul>
+
+<p>What I don’t want to do:</p>
+
+<ul>
+<li>Write lot of code</li>
+
+<li>Spend my money</li>
+
+<li>Have an awful list of links</li>
+</ul>
+
+<h3 id="1_menubased">1. Menu-based</h3>
+
+<p>List last posts in <em>ALL</em> your pages, the old and ugly way.</p>
+<div class='highlight'><pre><code class='html'><span class='nt'>&lt;ul</span> <span class='na'>class=</span><span class='s'>&quot;last_posts&quot;</span><span class='nt'>&gt;</span>  
+  {% for post in site.posts limit:20 %}
+     <span class='nt'>&lt;li&gt;</span>  
+       <span class='nt'>&lt;span&gt;</span>{{ post.date | date_to_string }}<span class='nt'>&lt;/span&gt;</span> <span class='ni'>&amp;raquo;</span>
+       <span class='nt'>&lt;a</span> <span class='na'>href=</span><span class='s'>&quot;{{ BASE_PATH }}{{ post.url }}&quot;</span><span class='nt'>&gt;</span>{{ post.title }}<span class='nt'>&lt;/a&gt;</span>  
+     <span class='nt'>&lt;/li&gt;</span>  
+  {% endfor %}  
+<span class='nt'>&lt;/ul&gt;</span>
+</code></pre></div>
+<h3 id="2_searchbased">2. Search-based</h3>
+
+<p>You may have heard about <a href="http://lunrjs.com">lunr</a> and its <a href="https://github.com/slashdotdash/jekyll-lunr-js-search">jekyll integration</a>, you can find a demo <a href="http://10consulting.com/search">here</a>. It’s pretty awesome but it lacks critical features for now (most critical: stemming doesn’t replace typo-tolerance, matching terms are not highlighted <a href="https://github.com/olivernn/lunr.js/issues/25">issue 25</a>).</p>
+
+<p>It’s been 3 months since I’ve joined <a href="http://www.algolia.com">Algolia</a> and I cannot let a day go by without trying to plug our search-engine somewhere new. Wow, my personal blog is totally “somewhere” new. Let’s give it a try; Algolia is <em>NOT</em> a site-search engine; but it could be the perfect match to easily jump on old posts.</p>
+
+<p>WAIT! You said you don’t want to pay anything; Algolia is a <a href="http://www.algolia.com/pricing">paying service</a>. You’re right, just <a href="mailto:sylvain+from+algolia+dot+com">send me an email</a> and I’ll convert your 14-day free trial to an unlimited <em>custom</em> free plan.</p>
+
+<p>First, I need to patch my dependencies (I use a <code>Gemfile</code> and you should too :p):</p>
+<script src='https://gist.github.com/7664465.js?file=Gemfile'><![CDATA[ ]]></script>
+<p>Let’s make it the proper way and add all configuration stuff in my <code>_config.yml</code>.</p>
+<script src='https://gist.github.com/7664465.js?file=_config.yml'><![CDATA[ ]]></script>
+<p>Reindex all post titles while publishing to Github’s <code>gh-pages</code> branch.</p>
+<script src='https://gist.github.com/7664465.js?file=Rakefile'><![CDATA[ ]]></script>
+<p>I used a <a href="https://github.com/algolia/typeahead.js">patched version</a> of Typeahead.js to be able to use it with an Algolia backend (see the <a href="https://github.com/twitter/typeahead.js/pull/473">pull-request</a>).</p>
+<script src='https://gist.github.com/7664465.js?file=layout.html'><![CDATA[ ]]></script>
+<p><a href="http://redox.github.io/mojombo">Live demo</a> with <a href="http://tom.preston-werner.com/">Tom Preston-Werner’s blog</a>, CEO of Github and creator of Jekyll. You can find the <a href="https://github.com/redox/mojombo/commit/070de82864fb17fb1f36f623e3136e398503370c">whole patch</a> on Github.</p>
+<iframe src='http://redox.github.io/mojombo/' style='width: 100%; height: 600px; border: 2px solid #ccc;'> </iframe>
+  
+</section>
+
+
+
+<section>
+    <div id="disqus_thread"></div>
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+    var disqus_shortname = 'sylvainutard'; // required: replace example with your forum shortname
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+</section>
+
+
+
+    </div>
+
+    <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+
+
+<script>
+    (function(d, t) {
+        var g = d.createElement(t),
+            s = d.getElementsByTagName(t)[0];
+        g.src = '//hnbutton.appspot.com/static/hn.min.js';
+        s.parentNode.insertBefore(g, s);
+    }(document, 'script'));
+</script>
+
+<script type="text/javascript"> 
+  var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+  document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script> 
+<script type="text/javascript"> 
+  var pageTracker = _gat._getTracker("UA-2837949-2");
+  pageTracker._initData();
+  pageTracker._trackPageview();
+</script>
+
+
+
+<script src="/assets/algoliasearch.min.js"></script>
+<script src="/assets/typeahead.min.js"></script>
+<script>
+  var apiClient = new AlgoliaSearch('sylvain', 'd962ad6512680f755df047e03a6af6fd');
+  var idx = apiClient.initIndex('blog_posts');
+
+  function go() {
+    idx.search($('#blog-search-input').val(), function(success, content) {
+      if (success && content.hits.length > 0) {
+        window.location.href = content.hits[0].url;
+      }
+    });
+  }
+
+  $('#blog-search-input').typeahead({
+    name: 'blogposts',
+    remote: idx.getTypeaheadTransport(),
+    valueKey: 'title',
+  }).on('keydown', function(e) {
+    if (e.which == 13) {
+      go();
+    }
+  }).on('typeahead:selected', function(e) {
+    go();
+  }).focus();
+</script>
+
+
+    <script type="text/javascript">
+      var speedKit = {
+        appName: 'perfect-forest-14',
+        whitelist: [
+      /* START Default Whitelist */
+          {
+            host: /utard\.info$/
+          }
+      /* END Default Whitelist */
+        ],
+        blacklist: [],
+      };
+      !function(e,n,t,r,i,o){function c(){return"https://"+(r.appDomain||"{}.app.baqend.com".replace("{}",r.appName))+"/v1"}function u(e,n,t){var r;e.put(location.origin+"/"+n,new Response(null,{status:200,statusText:(r=t,JSON.stringify(r,function(e,n){return n instanceof RegExp?"regexp:/"+n.source+"/"+(n.flags||""):n}))}))}var s;"serviceWorker"in n&&(window.SpeedKit={subscribe:function(){return"Notification"in window?Notification.requestPermission().then(function(e){return"denied"===e?"denied":"granted"!==e?"undecided":n.serviceWorker.ready.then(function(e){var n=e.pushManager;return function(e){return e.getSubscription().then(function(e){return!!e})}(n).then(function(e){return!!e||function(e){return fetch(c()+"/config/VAPIDPublicKey").then(function(e){return e.arrayBuffer()}).then(function(e){return{applicationServerKey:e,userVisibleOnly:!0}}).then(function(n){return e.subscribe(n)}).then(function(e){var n={subscription:e,devicetype:"WebPush"};return fetch(c()+"/db/Device/register",{method:"POST",credentials:"include",body:JSON.stringify(n),headers:{"Content-Type":"application/json"}})}).then(function(e){return 200===e.status},function(){return!1})}(n)})}).then(function(e){return e?"registered":"unregistered"})}):Promise.resolve("unsupported")}},o=r.sw||"/sw.js",!r.disabled&&(!(s=n.userAgent.match(/chrome\/(\d+)/i))||n.userAgent.match(/edge\//i)||parseInt(s[1],10)>=61)?(n.serviceWorker.register(o,{scope:r.scope||"/"}).then(function(n){window.addEventListener("unload",function(){n.active&&n.active.postMessage({type:"send-cookies",data:e.cookie})})}),"undefined"!=typeof caches&&caches.open("baqend-speedkit").then(function(n){u(n,"com.baqend.speedkit.screen",{dpr:window.devicePixelRatio,width:window.screen.width}),u(n,"com.baqend.speedkit.config",r),u(n,"com.baqend.speedkit.cookie",e.cookie)})):n.serviceWorker.getRegistration(o).then(function(e){return!!e&&e.unregister()}))}(document,navigator,0,"undefined"!=typeof speedKit?speedKit:config);
+      </script>
+  </body>
+</html>

@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>New responsabilities &mdash; Sylvain UTARD</title>
+    <link rel="stylesheet" href="/assets/hyde.css">
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans:300,400italic,400,600,700|Abril+Fatface">
+    <link href="/feed.xml" rel="alternate" type="application/rss+xml" title="Sylvain UTARD" />
+    <meta name="title" content="New responsabilities ">
+    <link rel="canonical" href="http://sylvain.utard.info/2012/12/31/exalead-new-responsabilities/">
+    <meta property="og:title" content="New responsabilities "/>
+    <meta property="og:url" content="http://sylvain.utard.info/2012/12/31/exalead-new-responsabilities/"/>
+    
+    <meta property="og:description" content="<p>Not enougth time this year for my off-hours project. Lots of new responsabilities and challenges for the release of version 2013 and 2013x of CloudView. 2 major releases + 6 minor releases !!</p>"/>
+    <meta name="description" content="<p>Not enougth time this year for my off-hours project. Lots of new responsabilities and challenges for the release of version 2013 and 2013x of CloudView. 2 major releases + 6 minor releases !!</p>"/>
+    
+    <meta property="og:site_name" content="Sylvain UTARD">
+  </head>
+  <body>
+
+    <header class="masthead">
+      <div class="masthead-searchform">
+        <input type="text" name="q" class="search-input" placeholder="Search" id="blog-search-input" />
+      </div>
+      <div class="masthead-inner">
+        <h1><a href="/">Sylvain UTARD</a></h1>
+        <p class="lead">
+          #geek #passionate #entrepreneur #french #epita
+          #c++ #java #ruby #rails #js
+          #textmining #searchengine #lucene #bigdata #nosql
+        
+          <br />
+          <br />
+
+          I'm currently <em>VP of engineering</em> at <a href="http://www.algolia.com">Algolia</a>.
+        </p>
+
+        <div class="colophon">
+          <ul class="colophon-links">
+            <li>
+              <a href="http://www.linkedin.com/in/sylvainutard">Contact me on linkedin</a>
+            </li>
+            <li>
+              <a href="https://twitter.com/sylvainutard">Follow me on twitter</a>
+            </li>
+          </ul>
+          <p>
+            <script type="text/javascript">document.write('sylvain' + '.' + 'utard' + '@' + 'gmail.com')</script><br />
+            <script type="text/javascript">document.write('(+33) 6 ' + '15 14 27' + ' 47')</script>
+          </p>
+        </div>
+
+      </div>
+    </header>
+
+    <div class="content container">
+      <section class="post">
+  <div class="post-header">
+    <h4>
+      <span class="post-date">
+        
+          2012-2013
+        
+      </span>
+      
+      <a href="http://exalead.com/software">exalead.com/software</a>
+      
+    </h4>
+    <h1>New responsabilities</h1>
+    
+<div class="social">
+    
+    <div>
+        <a href="https://twitter.com/share" class="twitter-share-button"  data-text="New responsabilities" data-related="">Tweet</a>
+    </div>
+    
+
+    
+
+    
+    
+    
+    <div>
+        <a href="http://news.ycombinator.com/submit" class="hn-share-button">Vote on HN</a>
+    </div>
+    
+
+    
+    <div>
+        <script type="text/javascript" src="http://www.reddit.com/static/button/button1.js"></script>
+    </div>
+    
+</div>
+
+
+  </div>
+  <p>Not enougth time this year for my off-hours project. Lots of new responsabilities and challenges for the release of version 2013 and 2013x of CloudView. 2 major releases + 6 minor releases !!</p>
+  
+  <div class="text-center"><img src="/images/v6r2013x_thumb.jpg" alt="New responsabilities" /></div>
+  
+</section>
+
+
+
+    </div>
+
+    <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+
+
+<script>
+    (function(d, t) {
+        var g = d.createElement(t),
+            s = d.getElementsByTagName(t)[0];
+        g.src = '//hnbutton.appspot.com/static/hn.min.js';
+        s.parentNode.insertBefore(g, s);
+    }(document, 'script'));
+</script>
+
+<script type="text/javascript"> 
+  var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+  document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script> 
+<script type="text/javascript"> 
+  var pageTracker = _gat._getTracker("UA-2837949-2");
+  pageTracker._initData();
+  pageTracker._trackPageview();
+</script>
+
+
+
+<script src="/assets/algoliasearch.min.js"></script>
+<script src="/assets/typeahead.min.js"></script>
+<script>
+  var apiClient = new AlgoliaSearch('sylvain', 'd962ad6512680f755df047e03a6af6fd');
+  var idx = apiClient.initIndex('blog_posts');
+
+  function go() {
+    idx.search($('#blog-search-input').val(), function(success, content) {
+      if (success && content.hits.length > 0) {
+        window.location.href = content.hits[0].url;
+      }
+    });
+  }
+
+  $('#blog-search-input').typeahead({
+    name: 'blogposts',
+    remote: idx.getTypeaheadTransport(),
+    valueKey: 'title',
+  }).on('keydown', function(e) {
+    if (e.which == 13) {
+      go();
+    }
+  }).on('typeahead:selected', function(e) {
+    go();
+  }).focus();
+</script>
+
+
+    <script type="text/javascript">
+      var speedKit = {
+        appName: 'perfect-forest-14',
+        whitelist: [
+      /* START Default Whitelist */
+          {
+            host: /utard\.info$/
+          }
+      /* END Default Whitelist */
+        ],
+        blacklist: [],
+      };
+      !function(e,n,t,r,i,o){function c(){return"https://"+(r.appDomain||"{}.app.baqend.com".replace("{}",r.appName))+"/v1"}function u(e,n,t){var r;e.put(location.origin+"/"+n,new Response(null,{status:200,statusText:(r=t,JSON.stringify(r,function(e,n){return n instanceof RegExp?"regexp:/"+n.source+"/"+(n.flags||""):n}))}))}var s;"serviceWorker"in n&&(window.SpeedKit={subscribe:function(){return"Notification"in window?Notification.requestPermission().then(function(e){return"denied"===e?"denied":"granted"!==e?"undecided":n.serviceWorker.ready.then(function(e){var n=e.pushManager;return function(e){return e.getSubscription().then(function(e){return!!e})}(n).then(function(e){return!!e||function(e){return fetch(c()+"/config/VAPIDPublicKey").then(function(e){return e.arrayBuffer()}).then(function(e){return{applicationServerKey:e,userVisibleOnly:!0}}).then(function(n){return e.subscribe(n)}).then(function(e){var n={subscription:e,devicetype:"WebPush"};return fetch(c()+"/db/Device/register",{method:"POST",credentials:"include",body:JSON.stringify(n),headers:{"Content-Type":"application/json"}})}).then(function(e){return 200===e.status},function(){return!1})}(n)})}).then(function(e){return e?"registered":"unregistered"})}):Promise.resolve("unsupported")}},o=r.sw||"/sw.js",!r.disabled&&(!(s=n.userAgent.match(/chrome\/(\d+)/i))||n.userAgent.match(/edge\//i)||parseInt(s[1],10)>=61)?(n.serviceWorker.register(o,{scope:r.scope||"/"}).then(function(n){window.addEventListener("unload",function(){n.active&&n.active.postMessage({type:"send-cookies",data:e.cookie})})}),"undefined"!=typeof caches&&caches.open("baqend-speedkit").then(function(n){u(n,"com.baqend.speedkit.screen",{dpr:window.devicePixelRatio,width:window.screen.width}),u(n,"com.baqend.speedkit.config",r),u(n,"com.baqend.speedkit.cookie",e.cookie)})):n.serviceWorker.getRegistration(o).then(function(e){return!!e&&e.unregister()}))}(document,navigator,0,"undefined"!=typeof speedKit?speedKit:config);
+      </script>
+  </body>
+</html>
