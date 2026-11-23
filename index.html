@@ -136,6 +136,14 @@
     }
     .timeline .role { color: var(--muted); margin-top: 1px; }
     .timeline .desc { color: var(--muted); font-size: 14px; margin: 6px 0 0; max-width: 46ch; }
+    /* Sub-timeline (roles within one company) */
+    .timeline .subline { list-style: none; margin: 14px 0 0; padding: 0; }
+    .timeline .subline li { padding: 0 0 8px 20px; font-size: 14px; }
+    .timeline .subline li:last-child { padding-bottom: 0; }
+    .timeline .subline li::before { top: 8px; left: 2px; width: 7px; height: 7px; }
+    .timeline .subline li:not(:last-child)::after { left: 5px; top: 17px; bottom: -1px; }
+    .timeline .subline .head { color: var(--muted); }
+    .timeline .subline .when { font-weight: 400; }
     footer {
       margin-top: 72px;
       padding-top: 24px;
@@ -182,22 +190,42 @@
         <li>
           <a href="https://sorare.com">
             <div class="head"><span class="company">Sorare</span><span class="when">2021 – 2025</span></div>
-            <div class="role">Head of Platform Engineering</div>
             <p class="desc">Scaled the platform behind a high-traffic consumer product.</p>
           </a>
+          <ol class="subline">
+            <li><div class="head"><span>VP Engineering</span><span class="when">2024 – 2025</span></div></li>
+            <li><div class="head"><span>Head of Platform Engineering</span><span class="when">2021 – 2024</span></div></li>
+          </ol>
         </li>
         <li>
           <a href="https://www.algolia.com">
             <div class="head"><span class="company">Algolia</span><span class="when">2013 – 2021</span></div>
-            <div class="role">VP Engineering, then General Manager</div>
             <p class="desc">Joined as the first employee and grew engineering to 100+ engineers.</p>
           </a>
+          <ol class="subline">
+            <li><div class="head"><span>General Manager, AI</span><span class="when">2020 – 2021</span></div></li>
+            <li><div class="head"><span>VP Engineering</span><span class="when">2013 – 2020</span></div></li>
+            <li><div class="head"><span>Y Combinator, Winter 2014 batch</span><span class="when">2014</span></div></li>
+          </ol>
         </li>
         <li>
           <a href="https://www.3ds.com/products/exalead">
             <div class="head"><span class="company">Exalead</span><span class="when">2008 – 2013</span></div>
-            <div class="role">Core Technologies</div>
+            <div class="role">Built NLP processing pipelines &amp; enterprise search core technologies</div>
             <p class="desc">Managed a team of 20+ engineers on the search engine's core.</p>
+          </a>
+          <ol class="subline">
+            <li><div class="head"><span>Engineering Manager</span><span class="when">2012 – 2013</span></div></li>
+            <li><div class="head"><span>Senior Software Engineer</span><span class="when">2010 – 2012</span></div></li>
+            <li><div class="head"><span>Software Engineer</span><span class="when">2008 – 2010</span></div></li>
+            <li><div class="head"><span>Intern</span><span class="when">2008</span></div></li>
+          </ol>
+        </li>
+        <li>
+          <a href="http://liveonbankiz.org">
+            <div class="head"><span class="company">Live On BanKiZ</span><span class="when">2001 – 2012</span></div>
+            <div class="role">Founder</div>
+            <p class="desc">A popular French browser game where players adopted and raised a virtual penguin.</p>
           </a>
         </li>
       </ol>
